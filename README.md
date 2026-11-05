@@ -4,11 +4,11 @@ Despliegue de Apache con HTTPS en una instancia EC2 de AWS, automatizado con scr
 
 ## 1. Pasos realizados
 
-1. Instancia EC2 con Ubuntu Server LTS, tipo t2.micro/t3.micro.
+1. Instancia EC2 con Ubuntu Server LTS, tipo t3.micro.
 2. Security Group con entrada TCP 22 (SSH), 80 (HTTP) y 443 (HTTPS).
-3. Par de claves propio (ed25519) generado en mi equipo e importado en AWS.
+3. Par de claves creado desde el asistente de lanzamiento de EC2 (Key pair → Create new key pair), con descarga del archivo `.pem` para conectarme por SSH.
 4. IP elástica asociada a la instancia.
-5. Repositorio clonado en la instancia mediante SSH.
+5. Repositorio clonado en la instancia por SSH, con una clave ed25519 generada en la instancia y registrada en GitHub.
 6. Ejecución de `install_apache.sh` y después `setup_selfsigned_certificate.sh`.
 7. Entrada en `/etc/hosts` del equipo cliente: `<IP_ELASTICA> practica-https.test`.
 8. Pruebas de verificación (sección 3).
