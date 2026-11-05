@@ -1,0 +1,5 @@
+# Secretos: nunca se suben
+scripts/.env
+.env
+*.key
+*.pem
