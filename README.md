@@ -391,7 +391,10 @@ curl -I  http://184.193.128.213       # 301 → https://184.193.128.213/
 curl -kI https://184.193.128.213      # 200 OK
 ```
 
-![Acceso por IP](img/extra-curl-ip.png)
+![Acceso por IP](img/extra-curl-ip1.png)
+
+![Acceso por IP](img/extra-curl-ip2.png)
+
 
 Con `%{HTTP_HOST}` la redirección conserva la IP, de modo que `http://IP` lleva a `https://IP`.
 
