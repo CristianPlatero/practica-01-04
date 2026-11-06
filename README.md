@@ -42,8 +42,8 @@ El objetivo es desplegar un servidor **Apache con HTTPS** en una instancia **EC2
 |---|---|
 | Plataforma | AWS Academy Learner Lab |
 | Instancia | `practica-https` |
-| Sistema operativo | Ubuntu Server LTS (AMI de *Quick Start*) — versión: `[COMPLETAR]` |
-| Tipo de instancia | `[t2.micro / t3.micro]` |
+| Sistema operativo | Ubuntu Server LTS (AMI de *Quick Start*) — versión: `26.04 LTS` |
+| Tipo de instancia | `t3.micro` |
 | Par de claves | Creado desde el asistente de lanzamiento de EC2 (`.pem`) |
 | IP elástica | `184.193.128.213` |
 | Dominio de prueba | `practica-https.test` |
@@ -55,7 +55,7 @@ El objetivo es desplegar un servidor **Apache con HTTPS** en una instancia **EC2
 ### 3.1 Creación de la instancia
 
 1. Arranqué el laboratorio (*Start Lab*) y abrí la consola de AWS.
-2. En **EC2 → Launch instance** creé la instancia `practica-https` con la AMI oficial de Ubuntu Server LTS más reciente y tipo `[t3.micro]`.
+2. En **EC2 → Launch instance** creé la instancia `practica-https` con la AMI oficial de Ubuntu Server LTS más reciente y tipo `t3.micro`.
 3. En *Key pair* elegí **crear un par nuevo** desde el propio asistente y descargué el archivo `.pem`, que guardé en `~/.claves/` con permisos restringidos:
    ```bash
    chmod 400 ~/.claves/practica-https.pem
@@ -67,7 +67,7 @@ Un Security Group funciona como un cortafuegos virtual: bloquea todo el tráfico
 
 | Tipo | Protocolo | Puerto | Origen | Para qué |
 |---|---|---|---|---|
-| SSH | TCP | 22 | `[Mi IP / 0.0.0.0/0]` | Administración remota |
+| SSH | TCP | 22 | `Mi IP / 0.0.0.0/0` | Administración remota |
 | HTTP | TCP | 80 | `0.0.0.0/0` | Acceso HTTP y redirección |
 | HTTPS | TCP | 443 | `0.0.0.0/0` | Acceso HTTPS |
 
