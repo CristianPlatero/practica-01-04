@@ -375,7 +375,7 @@ Con esto el equipo traduce el dominio a la IP elástica de la instancia.
 - **Prueba 5.** `ss -tlnp`: `t` TCP, `l` en escucha, `n` salida numérica, `p` proceso. Aparecen `:80` y `:443`.
 - **Prueba 6.** `curl -I` pide solo las cabeceras. El código **301** significa «movido permanentemente»; el navegador recordará la redirección.
 - **Prueba 7.** `-k` hace que `curl` acepte el certificado aunque no sea de confianza. Sin esa opción fallaría por ser autofirmado.
-- **Prueba 8.** `-servername` envía el **SNI**, que indica al servidor qué dominio quiere el cliente. Al final, `[COMPLETAR: Verify return code]` (con un certificado autofirmado se espera el código 18, `self-signed certificate`: la conexión TLS se establece, pero el cliente no puede validar al emisor). Versión TLS negociada: `[COMPLETAR]`. Cifrado: `[COMPLETAR]`.
+- **Prueba 8.** `-servername` envía el **SNI**, que indica al servidor qué dominio quiere el cliente. La negociación usó **TLSv1.3** con el cifrado **TLS_AES_256_GCM_SHA384** y una clave pública RSA de 2048 bits, con firma `RSA-SHA256`. En la cadena el sujeto (`s:`) y el emisor (`i:`) son idénticos, lo que confirma que el certificado está autofirmado. La salida termina con `Verify return code: 18 (self-signed certificate)`, que es lo esperado: la conexión TLS se establece y cifra, pero el cliente no puede validar la confianza del emisor porque no es una CA reconocida.
 - **Prueba 9.** Chrome muestra `NET::ERR_CERT_AUTHORITY_INVALID` porque no reconoce al emisor. Tras aceptar la excepción se ve la página de Apache y, en los detalles del certificado, mis datos.
 
 Las pruebas 1 y 2 se hicieron sobre una instancia recién creada; las 6 y 7, desde mi equipo, lo que comprueba también el Security Group.
